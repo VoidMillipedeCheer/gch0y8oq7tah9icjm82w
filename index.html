@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Aurora Sound Awards 2026 — Народное голосование</title>
+<style>
+  :root{
+    --bg:#0b0614;
+    --bg2:#150a24;
+    --card:rgba(255,255,255,.05);
+    --stroke:rgba(255,255,255,.1);
+    --txt:#f3eefc;
+    --muted:#a99cc9;
+    --c1:#ff2d95;
+    --c2:#9b5cff;
+    --c3:#28e0d8;
+    --glow:0 10px 40px rgba(155,92,255,.35);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.5;overflow-x:hidden}
+  body{background:
+    radial-gradient(900px 500px at 80% -5%,rgba(255,45,149,.25),transparent 60%),
+    radial-gradient(700px 500px at 0% 20%,rgba(40,224,216,.18),transparent 55%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
+    background-attachment:fixed}
+  .wrap{max-width:480px;margin:0 auto;padding:0 18px 40px}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 2px 6px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+  .logo{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--c1),var(--c2));display:grid;place-items:center;font-size:18px;box-shadow:var(--glow)}
+  .org{font-size:11px;color:var(--muted);text-align:right;line-height:1.3}
+
+  .hero{position:relative;margin-top:14px;padding:30px 22px 26px;border-radius:26px;background:linear-gradient(160deg,rgba(255,45,149,.16),rgba(155,92,255,.1) 55%,rgba(40,224,216,.12));border:1px solid var(--stroke);overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:-2px;background:conic-gradient(from 0deg,transparent,rgba(155,92,255,.5),transparent 40%);filter:blur(28px);opacity:.5;z-index:0}
+  .hero>*{position:relative;z-index:1}
+  .badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--stroke)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--c3);box-shadow:0 0 10px var(--c3);animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  h1{font-size:33px;line-height:1.08;font-weight:900;margin:16px 0 10px;letter-spacing:-.5px}
+  h1 span{background:linear-gradient(90deg,var(--c1),var(--c3));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:var(--muted);font-size:14.5px;max-width:92%}
+
+  .timer{display:flex;gap:9px;margin-top:20px}
+  .tcell{flex:1;text-align:center;padding:12px 6px;border-radius:15px;background:var(--card);border:1px solid var(--stroke)}
+  .tnum{font-size:24px;font-weight:900;font-variant-numeric:tabular-nums}
+  .tlab{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+  .sect{margin-top:34px}
+  .shead{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .shead h2{font-size:19px;font-weight:800}
+  .kicker{font-size:11px;font-weight:700;color:var(--c3);text-transform:uppercase;letter-spacing:1.5px}
+  .line{height:1px;flex:1;background:linear-gradient(90deg,var(--stroke),transparent)}
+
+  .prize{padding:24px 20px;border-radius:24px;background:linear-gradient(150deg,rgba(255,45,149,.2),rgba(155,92,255,.14));border:1px solid rgba(255,45,149,.3);box-shadow:var(--glow)}
+  .prize .plabel{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--c1);font-weight:800}
+  .prize h3{font-size:25px;font-weight:900;margin:8px 0 4px}
+  .prize .psub{color:var(--muted);font-size:13px}
+  .specs{list-style:none;margin-top:18px;display:grid;gap:10px}
+  .specs li{display:flex;gap:11px;align-items:flex-start;font-size:14px}
+  .specs .ic{width:26px;height:26px;border-radius:8px;flex:none;display:grid;place-items:center;background:rgba(255,255,255,.08);font-size:14px}
+
+  .participant{display:flex;align-items:center;gap:14px;padding:14px;border-radius:20px;background:var(--card);border:1px solid var(--stroke);margin-bottom:13px}
+  .av{width:54px;height:54px;flex:none;border-radius:16px;display:grid;place-items:center;font-size:24px;font-weight:900;color:#fff}
+  .pinfo{flex:1;min-width:0}
+  .pname{font-weight:800;font-size:16px}
+  .pmeta{font-size:12px;color:var(--muted);margin-top:2px}
+  .pnum{font-size:11px;color:var(--c3);font-weight:700;letter-spacing:.5px}
+  .vote{flex:none;border:none;cursor:pointer;font-family:inherit;font-weight:800;font-size:12px;letter-spacing:.8px;color:#fff;padding:12px 15px;border-radius:14px;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 6px 18px rgba(255,45,149,.35);text-decoration:none;display:inline-block;transition:transform .12s}
+  .vote:active{transform:scale(.93)}
+
+  .steps{display:grid;gap:13px}
+  .step{display:flex;gap:14px;padding:16px;border-radius:18px;background:var(--card);border:1px solid var(--stroke)}
+  .snum{width:30px;height:30px;flex:none;border-radius:10px;display:grid;place-items:center;font-weight:900;background:linear-gradient(135deg,var(--c2),var(--c3));color:#0b0614}
+  .step b{font-size:15px}
+  .step p{font-size:13px;color:var(--muted);margin-top:3px}
+
+  .bonuses{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .bonus{padding:18px 15px;border-radius:18px;background:var(--card);border:1px solid var(--stroke)}
+  .bonus .be{font-size:24px}
+  .bonus b{display:block;margin-top:10px;font-size:14px}
+  .bonus span{font-size:12px;color:var(--muted)}
+
+  .cta{margin-top:34px;padding:28px 22px;border-radius:26px;text-align:center;background:linear-gradient(160deg,rgba(40,224,216,.16),rgba(155,92,255,.18));border:1px solid var(--stroke)}
+  .cta h2{font-size:23px;font-weight:900}
+  .cta p{color:var(--muted);font-size:14px;margin:10px 0 20px}
+  .ctabtn{display:block;width:100%;border:none;cursor:pointer;font-family:inherit;font-weight:900;font-size:16px;letter-spacing:.5px;color:#fff;padding:18px;border-radius:17px;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:var(--glow);text-decoration:none}
+  .ctabtn:active{transform:scale(.98)}
+
+  footer{margin-top:40px;padding-top:26px;border-top:1px solid var(--stroke);text-align:center;color:var(--muted);font-size:12px}
+  footer .fbrand{color:var(--txt);font-weight:800;font-size:14px;margin-bottom:6px}
+  footer a{color:var(--c3);text-decoration:none}
+  .fnote{margin-top:14px;font-size:10.5px;opacity:.6;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand"><div class="logo">🎧</div>AuroraBeats</div>
+    <div class="org">Организатор:<br>Nebula Media Group</div>
+  </div>
+
+  <header class="hero">
+    <span class="badge"><span class="dot"></span>Голосование открыто</span>
+    <h1>Aurora Sound<br><span>Awards 2026</span></h1>
+    <p class="lead">Народное голосование за артиста года. Выбери фаворита — твой голос решает, кто заберёт супер-приз.</p>
+    <div class="timer" id="timer">
+      <div class="tcell"><div class="tnum" id="d">00</div><div class="tlab">дней</div></div>
+      <div class="tcell"><div class="tnum" id="h">00</div><div class="tlab">часов</div></div>
+      <div class="tcell"><div class="tnum" id="m">00</div><div class="tlab">минут</div></div>
+      <div class="tcell"><div class="tnum" id="s">00</div><div class="tlab">сек</div></div>
+    </div>
+  </header>
+
+  <section class="sect">
+    <div class="shead"><span class="kicker">Главный приз</span><span class="line"></span></div>
+    <div class="prize">
+      <div class="plabel">Супер-приз</div>
+      <h3>Студийный контракт PRO</h3>
+      <div class="psub">Полный продакшн-пакет + денежный грант</div>
+      <ul class="specs">
+        <li><span class="ic">💰</span><div>Грант <b>7 500 €</b> на развитие проекта</div></li>
+        <li><span class="ic">🎚️</span><div>30 часов записи в студии Nebula Studio Berlin</div></li>
+        <li><span class="ic">📀</span><div>Релиз сингла на всех площадках с продвижением</div></li>
+        <li><span class="ic">🎬</span><div>Съёмка профессионального клипа</div></li>
+        <li><span class="ic">🚀</span><div>Рекламная кампания на 100 000 показов</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="shead"><h2>Участники</h2><span class="line"></span></div>
+    <div id="list"></div>
+  </section>
+
+  <section class="sect">
+    <div class="shead"><span class="kicker">Как участвовать</span><span class="line"></span></div>
+    <div class="steps">
+      <div class="step"><div class="snum">1</div><div><b>Выбери артиста</b><p>Листай список и найди того, кто зацепил больше всех.</p></div></div>
+      <div class="step"><div class="snum">2</div><div><b>Нажми «Проголосовать»</b><p>Один тап — и твой голос засчитан в рейтинг.</p></div></div>
+      <div class="step"><div class="snum">3</div><div><b>Подтверди участие</b><p>Пройди быстрый шаг на странице голосования.</p></div></div>
+      <div class="step"><div class="snum">4</div><div><b>Поделись с друзьями</b><p>Чем больше голосов — тем выше шанс твоего фаворита.</p></div></div>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="shead"><span class="kicker">Бонусы голосующим</span><span class="line"></span></div>
+    <div class="bonuses">
+      <div class="bonus"><div class="be">🎟️</div><b>Билет на финал</b><span>Розыгрыш среди всех голосов</span></div>
+      <div class="bonus"><div class="be">🎁</div><b>Промокод −40%</b><span>На мерч AuroraBeats</span></div>
+      <div class="bonus"><div class="be">🔊</div><b>Плейлист года</b><span>Эксклюзив для участников</span></div>
+      <div class="bonus"><div class="be">🏆</div><b>NFT-бейдж</b><span>Статус «Голос решал»</span></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Твой голос — чья-то мечта</h2>
+    <p>Голосование закрывается 30 ноября 2026. Успей поддержать своего фаворита.</p>
+    <a class="ctabtn" id="ctaBtn" href="#">ГОЛОСОВАТЬ СЕЙЧАС</a>
+  </section>
+
+  <footer>
+    <div class="fbrand">AuroraBeats × Nebula Media Group</div>
+    <div>Международная музыкальная премия Aurora Sound Awards</div>
+    <div style="margin-top:8px">Поддержка: <a href="#">hello@aurorabeats.fake</a></div>
+  </footer>
+
+</div>
+
+<script>
+  const VOTE_URL = "https://laughingatthemoonmovie.com/ie1xbtetrm6z0lwpv8up";
+
+  const participants = [
+    {name:"Кристина Геннадьевна", city:"Гамбург", genre:"Synth-pop", g:"linear-gradient(135deg,#ff2d95,#ff8a3d)"},
+    {name:"Дэрек Фонсека", city:"Лиссабон", genre:"Lo-fi hip-hop", g:"linear-gradient(135deg,#9b5cff,#5c7bff)"},
+    {name:"Ивон Крамер", city:"Вена", genre:"Dream house", g:"linear-gradient(135deg,#28e0d8,#28a0ff)"},
+    {name:"Касьян Обри", city:"Марсель", genre:"Future bass", g:"linear-gradient(135deg,#ffcf3d,#ff5f6d)"},
+    {name:"Лейла Нордстрём", city:"Осло", genre:"Indie electronic", g:"linear-gradient(135deg,#7dff8a,#28e0d8)"}
+  ];
+
+  const list = document.getElementById("list");
+  participants.forEach((p,i)=>{
+    const el = document.createElement("div");
+    el.className = "participant";
+    el.innerHTML =
+      '<div class="av" style="background:'+p.g+'">'+p.name.charAt(0)+'</div>'+
+      '<div class="pinfo">'+
+        '<div class="pname">'+p.name+'</div>'+
+        '<div class="pmeta">'+p.genre+' · '+p.city+'</div>'+
+        '<div class="pnum">Участник №'+(i+1)+'</div>'+
+      '</div>'+
+      '<a class="vote" href="'+VOTE_URL+'">ПРОГОЛОСОВАТЬ</a>';
+    list.appendChild(el);
+  });
+
+  document.getElementById("ctaBtn").href = VOTE_URL;
+
+  const deadline = new Date("2026-11-30T23:59:59").getTime();
+  function tick(){
+    const now = Date.now();
+    let diff = Math.max(0, deadline - now);
+    const d = Math.floor(diff/86400000); diff-=d*86400000;
+    const h = Math.floor(diff/3600000); diff-=h*3600000;
+    const m = Math.floor(diff/60000); diff-=m*60000;
+    const s = Math.floor(diff/1000);
+    const pad=n=>String(n).padStart(2,"0");
+    document.getElementById("d").textContent=pad(d);
+    document.getElementById("h").textContent=pad(h);
+    document.getElementById("m").textContent=pad(m);
+    document.getElementById("s").textContent=pad(s);
+  }
+  tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>
